@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <title>Weather App</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="weather-app">
+        <form id="form-search">
+          <div class="row">
+            <div class="col-9">
+              <input
+                id="input-city"
+                type="search"
+                placeholder="Type a city"
+                class="form-control"
+                value=""
+              />
+            </div>
+            <div class="col-3">
+              <input
+                type="submit"
+                value="Search City"
+                class="form-control btn btn-primary"
+              />
+
+              <input
+                id="current-location"
+                type="submit"
+                value="Current Location"
+                class="form-control btn btn-primary"
+              />
+            </div>
+          </div>
+        </form>
+        <br />
+        <h1 id="city-h1">Upper Village, Toronto, ONs</h1>
+
+        <ul>
+          <li id="real-date">DATE</li>
+          <li>Partly Cloudy</li>
+        </ul>
+        <div class="row">
+          <div class="col-6">
+            <img
+              class="float-left icon"
+              src="http://www.gstatic.com/onebox/weather/64/partly_cloudy.png"
+              alt="cloudy icon"
+            />
+            <div class="float-left">
+              <span class="temperature" id="temperature"> </span>
+              <span class="units">
+                <a href="#" id="celsius">°C</a> |
+                <a href="#" id="fahrenheit">°F</a>
+              </span>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <ul>
+              <li id="humidity">Humidity: 60%</li>
+              <li id="wind">Wind: 10 km/h</li>
+            </ul>
+          </div>
+        </div>
+
+        <hr />
+      </div>
+
+      <p class="footer">This website was coded by Rafaela A. Da Silva</p>
+    </div>
+
+    <script src="src/script.js"></script>
+  </body>
+</html>
