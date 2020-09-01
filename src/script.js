@@ -28,36 +28,31 @@ displayDate.innerHTML = formatDate(new Date());
 
 //////////////////////////////////////////////////////////
 
-function showCity(temperat, city) {
-  let temperature = Math.round(temperat.data.main.temp);
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = temperature;
+function showCityWeather(response) {
+  console.log(response.data);
+  document.querySelector("#city-h1").innerHTML = response.data.name;
+  document.querySelector("#temperature").innerHTML = Math.round(
+    response.data.main.temp
+  );
+  document.querySelector("#humidity").innerHTML = Math.round(
+    response.data.main.humidity
+  );
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  document.querySelector("#description").innerHTML =
+    response.data.weather[0].main;
 }
 
-// function showCity(temperat, city) {
-//   let temperature = Math.round(temperat.data.main.temp);
-//   let temperatureElement = document.querySelector("#temperature");
-//   temperatureElement.innerHTML = temperature;
-
-//   let city = city.name;
-//   let cityElement = document.querySelector("#input-city");
-//   cityElement.innerHTML = city;
-// }
-
-function getCity(event) {
+//make an API call to OpenWeather API
+//when I get the HTTP response, it displays the city name and the temperature
+function searchCity(event) {
   event.preventDefault();
-  let cityElement = document.querySelector("#input-city");
-
   let apiKey = `a1bb6d3b332cde5802976e6f7b07f502`;
-  let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityElement.value}&appid=${apiKey}&units=metric`;
-
-  axios.get(apiUrl).then(showCity);
+  let city = document.querySelector("#input-city").value;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showCityWeather);
 }
 
-let button = document.querySelector("#form-search");
-button.addEventListener("submit", getCity);
-
-navigator.geolocation.getCurrentPosition(showPosition);
-
-let button = document.querySelector("#current-location");
-button.addEventListener("click", showPosition);
+let form = document.querySelector("#form-search");
+form.addEventListener("submit", searchCity);
